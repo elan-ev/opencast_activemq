@@ -11,7 +11,7 @@
     name: activemq-dist
     state: present
     enablerepo: '{{ opencast_repository_identifiers }}'
-    update_cache: yes
+    update_cache: true
   when: ansible_os_family == 'RedHat'
 
 - name: get activemq configuration
