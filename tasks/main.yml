@@ -1,0 +1,28 @@
+---
+
+- name: install activemq (debian)
+  apt:
+    name: activemq-dist
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: install activemq (rhel)
+  dnf:
+    name: activemq-dist
+    state: present
+    enablerepo: '{{ opencast_repository_identifiers }}'
+    update_cache: yes
+  when: ansible_os_family == 'RedHat'
+
+- name: get activemq configuration
+  get_url:
+    url: https://raw.githubusercontent.com/opencast/opencast/r/{{ opencast_version_major }}.x/docs/scripts/activemq/activemq.xml
+    dest: /etc/activemq/activemq.xml
+    mode: '0644'
+  notify: restart activemq
+
+- name: start and enable activemq
+  service:
+    name: activemq
+    state: started
+    enabled: true
