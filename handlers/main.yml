@@ -1,6 +1,6 @@
 ---
 
-- name: restart postgresql
+- name: restart activemq
   service:
     name: activemq
     state: restarted
