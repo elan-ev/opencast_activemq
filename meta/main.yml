@@ -1,7 +1,10 @@
+---
+
 galaxy_info:
   author: Lars Kiesow
   role_name: opencast_activemq
-  namespace: lkiesow
+  namespace: elan
+  company: ELAN e.V.
   description: Installs and prepares ActiveMQ for Opencast
   license: BSD-3-Clause
   min_ansible_version: 2.9
@@ -18,4 +21,4 @@ galaxy_info:
       versions:
         - all
 dependencies:
-  - lkiesow.opencast_repository
+  - elan.opencast_repository
