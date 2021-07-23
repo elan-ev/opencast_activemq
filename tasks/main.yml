@@ -16,6 +16,7 @@
 
 - name: get activemq configuration
   get_url:
+    # yamllint disable-line rule:line-length
     url: https://raw.githubusercontent.com/opencast/opencast/r/{{ opencast_version_major }}.x/docs/scripts/activemq/activemq.xml
     dest: /etc/activemq/activemq.xml
     mode: '0644'
