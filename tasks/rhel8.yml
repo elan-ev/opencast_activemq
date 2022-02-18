@@ -1,0 +1,8 @@
+---
+- name: install activemq
+  dnf:
+    name: activemq-dist
+    state: present
+    enablerepo: '{{ opencast_repository_identifiers }}'
+    update_cache: true
+  notify: restart activemq

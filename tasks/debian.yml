@@ -1,0 +1,6 @@
+---
+- name: install activemq
+  apt:
+    name: activemq-dist
+    state: present
+  notify: restart activemq

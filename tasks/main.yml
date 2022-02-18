@@ -1,18 +1,12 @@
 ---
-
-- name: install activemq (debian)
-  apt:
-    name: activemq-dist
-    state: present
+- include_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: install activemq (rhel)
-  dnf:
-    name: activemq-dist
-    state: present
-    enablerepo: '{{ opencast_repository_identifiers }}'
-    update_cache: true
-  when: ansible_os_family == 'RedHat'
+- include_tasks: rhel7.yml
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 7
+
+- include_tasks: rhel8.yml
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version|int > 7
 
 - name: get activemq configuration
   get_url:
@@ -25,5 +19,4 @@
 - name: start and enable activemq
   service:
     name: activemq
-    state: started
     enabled: true
