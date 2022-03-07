@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    opencast_version_major: 11
+    opencast_repository_enabled_release: true
+  tasks:
+    - name: "Include opencast_activemq"
+      include_role:
+        name: "opencast_activemq"
